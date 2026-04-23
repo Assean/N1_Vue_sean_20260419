@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-test</title>
+    <script src="./vue.3.5.13.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="isIfOpen = !isIfOpen">if</button>
+        <button @click="isShowOpen = !isShowOpen">show</button>
+        <div v-if="isIfOpen">IFDIV</div>
+        <div v-show="isShowOpen">SHOWDIV</div>
+        <section class="box">
+                <h2>學生清單</h2>
+                <button @click="addItem">新增一筆資料</button>
+                <ul>
+                    <li v-for="(item,1) in 5" :key="i">
+                        {{ item }}
+                    </li>
+                </ul>
+            </section>
+    </div>
+    <script>
+        const {createApp,ref} = Vue;
+        createApp({
+            setup(){
+                const isIfOpen = ref(true);
+                const isShowOpen = ref(true);
+                // const nextId = ref(4)
+                const list = ref([
+                    { id: 1, name: 'Amy', score: 95 },
+                    { id: 2, name: 'Ben', score: 88 },
+                    { id: 3, name: 'Cody', score: 92 }
+                ])
+                return{isIfOpen,isShowOpen,list};
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
